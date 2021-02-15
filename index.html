@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Foundation Files -->
+    <link rel="stylesheet" href="./assets/js/Foundation/assets/css/foundation.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/js/foundation.min.js" integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs= sha384-53StQWuVbn6figscdDC3xV00aYCPEz3srBdV/QGSXw3f19og3Tq2wTRe0vJqRTEO sha512-X9O+2f1ty1rzBJOC8AXBnuNUdyJg0m8xMKmbt9I3Vu/UOWmSg5zG+dtnje4wAZrKtkopz/PEDClHZ1LXx5IeOw==" crossorigin="anonymous"></script>
+    <!--  Font awesome Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--  CSS Files -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Title -->
+    <title>FoodFeed</title>
+</head>
+<body style="background: url('./assets/images/bg.jpeg" class="hero d-flex align-items-center background-style">
+    <header class="header">
+        <!-- mobile nav bar -->
+        <div class="title-bar topbar-center-logo-mobile" data-responsive-toggle="topbar-center-logo" data-hide-for="medium">
+            <div class="title-bar-left">
+                <div class="title-bar-title">
+                    <img src="./assets/images/Restaurant-icon.png" alt="" style="width: 50px; height: 50px;" /></div>
+            </div>
+            <div class="title-bar-right">
+                <button class="menu-icon" type="button" data-toggle="topbar-center-logo"></button>
+            </div>
+        </div>
+        <!-- /mobile nav bar -->
+        
+        <!-- medium and larger nav bar -->
+        <div class="top-bar topbar-center-logo" id="topbar-center-logo">
+            <div class="top-bar-left">
+                <a href="index.html"><img src="./assets/images/Restaurant-icon.png" alt="" style="width: 50px; height: 50px;"/></a>
+            </div>
+            <div class="top-bar-center">
+                <ul class="menu vertical medium-horizontal text-center">
+                    <li><a href="index.html">Home </a></li>
+                    <li><a href="list.html">Favorites List</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <section>
+        <h1 class="site-name">Food <img src="./assets/images/Restaurant-icon.png" alt="" style="width: 50px; height: 50px;"/> <span class="text-primary"> Feed</span></h1>
+        <h2 class="motto">Find the <span class="text-primary">Best</span> Restaurant For <span class="text-primary">You</span></h2>
+        <div class="current-weather">
+            <span id="temp"></span> 
+            <img id="weather-icon" src=""></img> 
+            <span id="weather"></span>
+        </div>
+        <div class="searchbar">
+            <div class="grid-x grid-padding-x">
+                <div class="small-4 cell">
+                    <input id="getText" type="text" class="form-control" placeholder="Search for a food type">
+                </div>
+                <div class="small-4 cell">
+                    <select id="select_id" class="form-control form-control-lg">
+                        <option value="Select City" hidden>Select City</option>
+                        <option value="278">Austin</option>
+                        <option value="280">New York</option>
+                        <option value="281">Los Angeles</option>
+                        <option value="282" >Las Vegas</option>
+                        <option value="279">Seattle</option>
+                        <option value="277">Houston, TX</option>
+                        <option value="283">Washington</option>
+                        <option value="285">Detroit, MI</option>
+                        <option value="286">Portland, OR</option>
+                        <option value="287">Philadelphia, PA</option>
+                        <option value="288">Atlanta, GA</option>
+                        <option value="289">Boston ,MA</option>
+                        <option value="290">New Orleans, LA</option>
+                        <option value="291">Miami, Fl</option>
+                        <option value="292">Chicago, IL</option>
+                    </select>
+                </div>
+                <div class="small-4 cell">
+                    <select id="select_category" class="form-control form-control-lg">
+                        <option value="Select Category" hidden>Select Category</option>
+                        <option value="1">Delivery</option>
+                        <option value="2" >Dine-In</option>
+                        <option value="283">Cafes</option>
+                        <option value="8">Breakfast</option>
+                        <option value="9">Lunch</option>
+                        <option value="10">Dinner</option>
+                        <option value="11">Pubs/Bar</option>
+                    </select>
+                </div>
+            </div>
+            <div class=" success button align-center">
+                <button id="submit" class="btn">Search</button>
+            </div>
+        </div>
+    </section>
+    <div class="grid-container" id="card">
+    </div>
+
+    <div class="reveal" id="alert" data-reveal>
+        <h2 class="text-center">Notification:</h2>
+        <h4 class="lead text-center" id="alertMessage">Please enter search query</h4>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+      
+    <div class="reveal text-center" id="modalDetail" data-reveal>
+    <p class="modalDetails">
+        <span class="modal-title"> 
+            <span id="modal-title">  
+                <span id="modalPrice" class="text-center" style="font-size: smaller;"> $$</span> 
+            </span>
+        </span>
+        <button type="button"  id="modalFavorite">  
+            <i class="fas fa-thumbs-up circle-icon"></i>  
+        </button>
+        <br> <span id="modalCuisine" class="text-center" style="font-size: smaller;">American/Italian/ Mexican </span>
+        <span id="modalRatingText"></span>  <i class='fas fa-star'></i>
+        <br> 
+        <img id="icon-img" src="./assets/images/img.png"  style="margin-left:10px;margin-right:10px; max-height:150px;max-width:90%; padding-left: 200px;"/>
+        <div class="delivery-opt"><strong>Delivery Available:</strong> <span id="modalDelivery"> YES </span></div>
+    </p>
+    <p>
+    <hr>
+    <p class="modalDetails">
+        <strong>Address: </strong> <span id="modaladdres"> 1234 emala st uSA sliga  </span> <br>
+        <strong>Phone:</strong>  <span id="modalphone"> 4455-333-33232</span> <br>
+        <strong>Hours:</strong> <span id="timing"> 11:00 AM - 11:00 PM  </span> <br>
+    </p>
+    <hr>
+    <p style="text-align: center;">
+        <button type="button" class="success button" id="modalWebsite"> Website </button>
+        <button type="button" class="success button" id="modalMenu"> Menu </button>
+    </p>
+
+    <div id="map" style="width: 100%;">
+    </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+       
+    <script src="./assets/js/Foundation/assets/js/vendor.js"></script>
+    <script src="./assets/js/Foundation/assets/js/foundation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./assets/js/Foundation/assets/js/foundation.js"></script>
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    });
+</script>
+
+ <!-- ======= Footer ======= -->
+ <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Food<span class="text-primary">Feed</span> © Copyright Arti Karnik 2021</span>
+    </div>
+  </footer>
+  <!-- End  Footer -->
+
+        
+</body>
+</html>
